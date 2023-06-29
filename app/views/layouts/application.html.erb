@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+    <%= stylesheet_link_tag    'application', media: 'all',
+                                              'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+</head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!DOCTYPE html>
+<html>
+  <body>
+   <% if current_user.present?%>
+    <%= link_to "top",root_path %>
+    <%= link_to "logout","#" %>
+    <%= link_to "mypage",user_path(current_user.id) %>
+    <%= link_to "post",post_new_path(current_user.id) %>
+   <% else %>
+    <%= link_to "top",root_path %>
+    <%= link_to "signup",session_new_path %>
+    <%= link_to "login",new_user_path %>
+    <%= link_to "userindex",user_index_path%>
+   <% end %>
+    <%= yield %>
+  </body>
+</html>

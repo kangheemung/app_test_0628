@@ -1,0 +1,10 @@
+<h1>Users#show</h1>
+<p>Find me in app/views/users/show.html.erb</p>
+<%= User.find_by(id: params[:id]).name %>
+<%= User.find_by(id: params[:id]).email %>
+<%= link_to "edit",edit_user_path(@user.id) %>
+<% @posts.each do |post| %>
+<p><%= post.content%></p>
+<%=link_to "post_edit",post_edit_path(post.id) %>
+<%#= link_to "post_destroy",post_destroy_path(post.id), method: :delete %>
+<% end %>
